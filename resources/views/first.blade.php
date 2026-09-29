@@ -7,8 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    <h1>Здарова бандиты</h1>
+    <h2>Здарова бандиты</h2>
     <a href="/">Main Page</a>
-    <p>Сумма переменых a и b : {{$a}} и {{$b}} равна {{$c}}</p>
 </body>
 </html>
