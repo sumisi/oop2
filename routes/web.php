@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\StudentController;
+use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,6 +12,8 @@ Route::get('/', function () {
 Route::get('/first_page', function () {
     return view('first');
 });
+
+Route::get('/students',[StudentController::class, 'index'])->name('students.index');
 
 // Route::get('/first_page', function(){
 //     $a = 3;
