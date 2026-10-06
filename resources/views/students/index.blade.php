@@ -7,19 +7,27 @@
     <title>Список студентов</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container mx-auto">
         <h1>Список Студентов</h1>
-        <div class="grid grid-cols-4">
+        <a href="{{route('students.create')}}">
+            Создать студента
+        </a>
+        <div class="grid grid-cols-4 gap-2">
             @foreach ($students as $student)
                 <div>
                     <h2>
-                        {{$student->first_name}}
                         {{$student->last_name}}
+                        {{$student->first_name}}
                         {{$student->middle_name}}
                     </h2>
                     <p>
                         {{$student->birthday}}
                     </p>
+                    <form action="{{route('students.destroy',$student->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Удалить студента">
+                    </form>
                 </div>
             @endforeach
         </div>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('middle_name')->nullable();
             $table->date('birthday');
-            $table->integer('age');
+            $table->integer('age')->nullable();
             $table->foreignId('group_id')->nullable()->constrained();
             $table->timestamps();
         });
