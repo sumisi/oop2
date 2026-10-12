@@ -14,7 +14,7 @@
         </a>
         <div class="grid grid-cols-4 gap-2">
             @foreach ($students as $student)
-                <div>
+                <div class="bg-amber-300">
                     <h2>
                         {{$student->last_name}}
                         {{$student->first_name}}
@@ -28,6 +28,12 @@
                         @method('DELETE')
                         <input type="submit" value="Удалить студента">
                     </form>
+                    <a href="{{route('students.show', $student->id)}}">
+                        Посмотреть студента
+                    </a><br>
+                    <a href="{{route('students.edit', $student->id)}}">
+                        Изменить студента
+                    </a>
                 </div>
             @endforeach
         </div>

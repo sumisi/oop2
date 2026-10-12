@@ -37,4 +37,27 @@ class StudentController extends Controller
         $student->delete();
         return redirect()->back();
     }
+
+    public function show(Student $student)
+    {
+        return view('students.show', compact('student'));
+    }
+
+    public function edit(Student $student)
+    {
+        return view('students.edit', compact('student'));
+    }
+    
+    public function update(Request $request, Student $student)
+    {
+        $data = $request->validate([
+            'first_name' => 'string|required',
+            'last_name' => 'string|required',
+            'middle_name' => 'string|nullable',
+            'birthday' => 'date|required',
+        ]);
+
+        $student->update($data);
+        return redirect()->route('students.index');
+    }
 }
