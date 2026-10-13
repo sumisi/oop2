@@ -21,12 +21,18 @@
                         {{$student->middle_name}}
                     </h2>
                     <p>
-                        {{$student->birthday}}
+                        Дата рождения: {{$student->birthday}}
+                    </p>
+                    <p>
+                        Email: {{$student->email ?? 'нет'}}
+                    </p>
+                    <p>
+                        Группа: {{$student->group->title ?? 'нет'}}
                     </p>
                     <form action="{{route('students.destroy',$student->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="Удалить студента">
+                        <input type="submit" value="Удалить студента" class="text-red-500 text-[20px] font-bold">
                     </form>
                     <a href="{{route('students.show', $student->id)}}">
                         Посмотреть студента
@@ -35,6 +41,17 @@
                         Изменить студента
                     </a>
                 </div>
+            @endforeach
+        </div>
+        <hr>
+        <div>
+            @foreach ($groups as $group)
+                <div>
+                    <h3 class="text-red-500 text-[20px] font-bold">{{$group->title}}</h3>
+                    @foreach ($group->students as $student)
+                        <p>{{$student->full_name()}}</p>
+                    @endforeach
+                </div>              
             @endforeach
         </div>
     </div>
